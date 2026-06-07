@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Sakshi CN",
+    "rollNo": "STU001",
+    "className": "10-A",
+    "marks": 92,
+    "attendance": 96,
+    "joinedMonth": "2026-01",
+    "id": 1
+  },
+  {
+    "name": "Charitha",
+    "rollNo": "STU002",
+    "className": "10-A",
+    "marks": 87,
+    "attendance": 91,
+    "joinedMonth": "2026-01",
+    "id": 2
+  },
+  {
+    "name": "Akshay",
+    "rollNo": "STU003",
+    "className": "10-B",
+    "marks": 76,
+    "attendance": 88,
+    "joinedMonth": "2026-02",
+    "id": 3
+  },
+  {
+    "name": "Adel",
+    "rollNo": "STU004",
+    "className": "10-C",
+    "marks": 95,
+    "attendance": 98,
+    "joinedMonth": "2026-03",
+    "id": 4
+  },
+  {
+    "name": "Akash",
+    "rollNo": "STU005",
+    "className": "10-B",
+    "marks": 39,
+    "attendance": 74,
+    "joinedMonth": "2026-03",
+    "id": 5
+  },
+  {
+    "name": "Abhishek",
+    "rollNo": "STU006",
+    "className": "10-C",
+    "marks": 99,
+    "attendance": 82,
+    "joinedMonth": "2026-04",
+    "id": 6
+  },
+  {
+    "name": "Bharath",
+    "rollNo": "STU009",
+    "className": "10-A",
+    "marks": 56,
+    "attendance": 82,
+    "joinedMonth": "2026-06",
+    "id": 7
+  }
+]
