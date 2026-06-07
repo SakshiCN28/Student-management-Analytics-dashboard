@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Analytics</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <section class="auth-screen" id="authScreen">
+      <div class="auth-copy">
+        <p class="eyebrow">Full-stack analytics app</p>
+        <h1>Student management analytics</h1>
+        <p>
+          Login, manage student records, and view simple analytics for marks,
+          pass percentage, and top performers.
+        </p>
+      </div>
+
+      <div class="auth-card">
+        <div class="brand-row">
+          <span class="brand-mark">SA</span>
+          <div>
+            <strong>Student Analytics</strong>
+            <small>JWT protected dashboard</small>
+          </div>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Authentication">
+          <button class="tab active" id="loginTab" type="button">Login</button>
+          <button class="tab" id="registerTab" type="button">Register</button>
+        </div>
+
+        <form class="auth-form" id="authForm">
+          <label class="register-only" for="name">Name</label>
+          <input class="register-only" id="name" name="name" autocomplete="name" />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            minlength="6"
+            required
+          />
+
+          <button class="primary-btn" id="authSubmit" type="submit">Login</button>
+          <p class="status" id="authStatus"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="app-screen hidden" id="appScreen">
+      <aside class="sidebar">
+        <div class="brand-row">
+          <span class="brand-mark">SA</span>
+          <div>
+            <strong>Student Analytics</strong>
+            <small id="signedInUser">Dashboard</small>
+          </div>
+        </div>
+
+        <nav aria-label="Dashboard navigation">
+          <a class="active" href="#dashboard">Dashboard</a>
+          <a href="#analytics">Analytics</a>
+          <a href="#students">Data</a>
+        </nav>
+
+        <button class="ghost-btn" id="logoutBtn" type="button">Logout</button>
+      </aside>
+
+      <main class="shell">
+        <section class="page-title" id="dashboard">
+          <div>
+            <p class="eyebrow">Student management</p>
+            <h2>Analytics dashboard</h2>
+          </div>
+          <button class="primary-btn" id="newStudentBtn" type="button">Add Student</button>
+        </section>
+
+        <p class="status" id="appStatus"></p>
+
+        <section class="metric-grid" aria-label="Dashboard metrics">
+          <article class="metric-card">
+            <span>Total Students</span>
+            <strong id="totalStudents">0</strong>
+          </article>
+          <article class="metric-card">
+            <span>Average Marks</span>
+            <strong id="averageMarks">0%</strong>
+          </article>
+          <article class="metric-card">
+            <span>Pass Percentage</span>
+            <strong id="passPercentage">0%</strong>
+          </article>
+          <article class="metric-card">
+            <span>Top Performer</span>
+            <strong id="topPerformer">-</strong>
+          </article>
+        </section>
+
+        <section class="analytics-grid" id="analytics">
+          <article class="panel wide">
+            <div class="section-title">
+              <h3>Average marks by class</h3>
+              <span>Bar chart</span>
+            </div>
+            <canvas id="barChart" width="900" height="320"></canvas>
+          </article>
+
+          <article class="panel">
+            <div class="section-title">
+              <h3>Pass vs fail</h3>
+              <span>Pie chart</span>
+            </div>
+            <canvas id="pieChart" width="420" height="300"></canvas>
+          </article>
+
+          <article class="panel">
+            <div class="section-title">
+              <h3>Monthly admissions</h3>
+              <span>Line chart</span>
+            </div>
+            <canvas id="lineChart" width="420" height="300"></canvas>
+          </article>
+        </section>
+
+        <section class="panel performers-panel">
+          <div class="section-title">
+            <h3>Top performers</h3>
+            <span>Best marks first</span>
+          </div>
+          <div class="performer-list" id="topPerformers"></div>
+        </section>
+
+        <section class="panel" id="students">
+          <div class="section-title">
+            <h3>Student data management</h3>
+            <span>Add, edit, delete</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Roll No</th>
+                  <th>Class</th>
+                  <th>Marks</th>
+                  <th>Attendance</th>
+                  <th>Joined</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="studentRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </section>
+
+    <dialog class="student-dialog" id="studentDialog">
+      <form class="student-form" id="studentForm">
+        <div class="section-title">
+          <h3 id="studentFormTitle">Add student</h3>
+          <button class="icon-btn" id="closeDialogBtn" type="button" aria-label="Close">x</button>
+        </div>
+
+        <input id="studentId" type="hidden" />
+
+        <label for="studentName">Student Name</label>
+        <input id="studentName" required />
+
+        <label for="rollNo">Roll No</label>
+        <input id="rollNo" required />
+
+        <label for="className">Class</label>
+        <input id="className" placeholder="10-A" required />
+
+        <div class="form-row">
+          <div>
+            <label for="marks">Marks</label>
+            <input id="marks" type="number" min="0" max="100" required />
+          </div>
+          <div>
+            <label for="attendance">Attendance</label>
+            <input id="attendance" type="number" min="0" max="100" required />
+          </div>
+        </div>
+
+        <label for="joinedMonth">Joined Month</label>
+        <input id="joinedMonth" type="month" required />
+
+        <button class="primary-btn" type="submit">Save Student</button>
+      </form>
+    </dialog>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
