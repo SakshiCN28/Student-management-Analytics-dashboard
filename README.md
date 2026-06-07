@@ -102,3 +102,5 @@ python backend/app.py
 ```
 
 For online deployment, you can host it on PythonAnywhere, Render, or Railway. If deploying online, change `JWT_SECRET` in `backend/app.py` to a stronger private value.
+## Author
+Sakshi Nagaraj
